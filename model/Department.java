@@ -3,7 +3,13 @@ package application.model;
 import java.util.ArrayList;
 import java.util.Set;
 
-public class Department {
-	private ArrayList<Set<Employee>> employees;
-	private Set<Role> roles;
+public class Department implements syncAble{
+	private ArrayList<Set<Employee>> employeesByRoles;
+	private ArrayList<Role> roles;
+	private boolean sync;
+	@Override
+	public void changeAllPrefrence(Preference p) {
+		// TODO Auto-generated method stub
+		
+	}
 }

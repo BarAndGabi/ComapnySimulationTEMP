@@ -1,15 +1,21 @@
 package application.model;
 
 import java.util.ArrayList;
-import java.util.Set;
 
-public class Department implements syncAble{
-	private ArrayList<Set<Employee>> employeesByRoles;
+public class Department implements syncAble, choosePreference {
+	private ArrayList<ArrayList<Employee>> employeesByRoles;
 	private ArrayList<Role> roles;
 	private boolean sync;
+
 	@Override
-	public void changePrefrence(Preference p) {
+	public void syncObjectPrefrence(Preference p) {
 		// TODO Auto-generated method stub
-		
+
+	}
+
+	@Override
+	public void choosePreference() {
+		// TODO Auto-generated method stub
+
 	}
 }

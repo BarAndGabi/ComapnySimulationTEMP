@@ -8,7 +8,7 @@ public class Role implements syncAble{
 	private String jobTitle;
 	private ArrayList<Employee> EmployeesWithCurrentRole;
 	@Override
-	public void changePrefrence(Preference p) {
+	public void syncObjectPrefrence(Preference p) {
 		// TODO Auto-generated method stub
 		
 	}

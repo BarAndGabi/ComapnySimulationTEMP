@@ -8,7 +8,7 @@ public class Department implements syncAble{
 	private ArrayList<Role> roles;
 	private boolean sync;
 	@Override
-	public void changeAllPrefrence(Preference p) {
+	public void changePrefrence(Preference p) {
 		// TODO Auto-generated method stub
 		
 	}

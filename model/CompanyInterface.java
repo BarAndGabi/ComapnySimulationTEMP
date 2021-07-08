@@ -5,5 +5,5 @@ public interface CompanyInterface {
 
 	void addDepartment(Department d);
 
-	void addRole(Role r);
+	void addRole(Role r,Department d);
 }

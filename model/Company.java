@@ -20,18 +20,20 @@ public class Company implements CompanyInterface {
 	@Override
 	public void addEmployee(Employee a) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void addDepartment(Department d) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
-	public void addRole(Role r) {
+	public void addRole(Role r, Department d) {
 		// TODO Auto-generated method stub
-		
+
 	}
+
+	
 }

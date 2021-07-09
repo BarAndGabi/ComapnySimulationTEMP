@@ -6,7 +6,6 @@ public abstract class Person implements Serializable {
 	protected String name;
 	protected int yearOfBirth;
 
-
 	public Person(String name, int yearOfBirth) throws Exception {
 		setName(name);
 		setYearOfbirth(yearOfBirth);

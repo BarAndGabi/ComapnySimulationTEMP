@@ -3,30 +3,13 @@ package application.model;
 import java.util.ArrayList;
 
 public class Department implements syncAble, choosePreference {
-	private ArrayList<ArrayList<Employee>> employeesByRoles;
 	private ArrayList<Role> roles;
 	private boolean sync;
+	private String name;
+	private Preference preference;
 
-	public Department(boolean sync) {
-		setRoles(this.roles);
-		setEmployeesByRoles(this.employeesByRoles);
-
-	}
-
-	private void setEmployeesByRoles(ArrayList<ArrayList<Employee>> employeesByRoles2) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private void setRoles(ArrayList<Role> roles) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void syncObjectPrefrence(Preference p) {
-		// TODO Auto-generated method stub
-
+	public Department(String name, boolean sync, Preference pType, int hourChange) {
+		this.sync = sync;
 	}
 
 	@Override
@@ -34,4 +17,23 @@ public class Department implements syncAble, choosePreference {
 		// TODO Auto-generated method stub
 
 	}
+
+	public void addEmployee(Employee a, Role r) {
+		int index = this.findRole(r);
+		this.roles.get(index).addEmployee(a);
+
+	}
+
+	private int findRole(Role r) {
+		return this.roles.indexOf(r);
+	}
+
+	public void addRole(Role r) throws Exception {
+		int index = findRole(r);
+		if (index == -1)
+			this.roles.add(r);
+		else
+			throw new alreadyExistException();
+	}
+
 }

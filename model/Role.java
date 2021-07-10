@@ -19,17 +19,36 @@ public class Role implements syncAble, choosePreference {
 		this.preference = preference;
 	}
 
-
-
 	public void addEmployee(Employee a) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void choosePreference() {
+	public void choosePreference(PreferenceType t, int change) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public boolean isSynced() {
+		return this.sync;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof Role))
+			return false;
+		Role temp = (Role) obj;
+		if (temp.jobTitle() == this.jobTitle)
+			return true;
+		else
+			return false;
+	}
+
+	private String jobTitle() {
+		// TODO Auto-generated method stub
+		return this.jobTitle;
 	}
 
 }

@@ -18,9 +18,9 @@ public class Company implements CompanyInterface {
 		Preference p3 = new Preference(PreferenceType.EARLY_START, 8);
 		Preference p4 = new Preference(PreferenceType.HOME, 0);
 		Department logistic = this.addDepartment("logistic", false, p1, 0);
-		Department cars = this.addDepartment("cars", false, p2, 0);
-		Department mangment = this.addDepartment("mangment", true, p3, 0);
-		Department wizards = this.addDepartment("wizards", false, p4, 0);
+		Department cars = this.addDepartment("cars", false, p2, 6);
+		Department mangment = this.addDepartment("mangment", true, p3, 3);
+		Department wizards = this.addDepartment("wizards", false, p4, 2);
 		Role cleaner = this.addRole(35.5, "cleaner", true, logistic, p3);
 		Role carSalesMan = this.addRole(34, "car sales man", true, cars, p1);
 		Role fileOrganizer = this.addRole(25, "file organizer", true, mangment, p2);

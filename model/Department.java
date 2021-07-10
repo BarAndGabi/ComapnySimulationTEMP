@@ -13,7 +13,7 @@ public class Department implements syncAble, choosePreference {
 	}
 
 	@Override
-	public void choosePreference() {
+	public void choosePreference(PreferenceType t, int change) {
 		// TODO Auto-generated method stub
 
 	}
@@ -34,6 +34,27 @@ public class Department implements syncAble, choosePreference {
 			this.roles.add(r);
 		else
 			throw new alreadyExistException();
+	}
+
+	@Override
+	public boolean isSynced() {
+		return this.sync;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof Department))
+			return false;
+		Department temp = (Department) obj;
+		if (temp.getName() == this.name)
+			return true;
+		else
+			return false;
+	}
+
+	private String getName() {
+		// TODO Auto-generated method stub
+		return this.name;
 	}
 
 }

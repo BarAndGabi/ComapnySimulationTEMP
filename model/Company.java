@@ -25,13 +25,19 @@ public class Company implements CompanyInterface {
 		Role carSalesMan = this.addRole(34, "car sales man", true, cars, p1);
 		Role fileOrganizer = this.addRole(25, "file organizer", true, mangment, p2);
 		Role harryPotter = this.addRole(450.3, "harryPotter", false, wizards, p4);
+		EmployeeGlobaly yossi = new EmployeeGlobaly("yossi", 2002, p3, 7500, fileOrganizer);
+		EmployeeGlobaly bar = new EmployeeGlobaly("bar", 1996, p1, 11000, cleaner);
+		EmployeeGlobalyPlus itay = new EmployeeGlobalyPlus("itay", 2000, p1, harryPotter, 23000);
+		EmployeeGlobalyPlus ofir = new EmployeeGlobalyPlus("ofir", 1983, p4, fileOrganizer, 16000);
+		EmployeeHourly mor = new EmployeeHourly("mor", 2002, p2, 55, carSalesMan);
+		EmployeeHourly yotam = new EmployeeHourly("yotam", 2002, p2, 31, harryPotter);
 
 	}
 
 	@Override
-	public void addEmployee(Employee a, Role r, Department d) {
-		int index = this.findDepartment(d);
-		this.departments.get(index).addEmployee(a, r);
+	public void addEmployee(Employee a) {
+		int index = this.findDepartment(a.getDepartment());
+		this.departments.get(index).addEmployee(a);
 	}
 
 	private int findDepartment(Department d) {

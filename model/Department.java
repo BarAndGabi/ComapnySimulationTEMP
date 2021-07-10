@@ -14,12 +14,11 @@ public class Department implements syncAble, choosePreference {
 
 	@Override
 	public void choosePreference(PreferenceType t, int change) {
-		// TODO Auto-generated method stub
-
+		this.preference = new Preference(t, change);
 	}
 
-	public void addEmployee(Employee a, Role r) {
-		int index = this.findRole(r);
+	public void addEmployee(Employee a) {
+		int index = this.findRole(a.getRole());
 		this.roles.get(index).addEmployee(a);
 
 	}
@@ -53,7 +52,6 @@ public class Department implements syncAble, choosePreference {
 	}
 
 	private String getName() {
-		// TODO Auto-generated method stub
 		return this.name;
 	}
 

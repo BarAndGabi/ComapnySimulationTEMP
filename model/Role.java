@@ -20,13 +20,14 @@ public class Role implements syncAble, choosePreference {
 	}
 
 	public void addEmployee(Employee a) {
-		// TODO Auto-generated method stub
-
+		if (!(this.EmployeesWithCurrentRole.contains(a))) {
+			this.EmployeesWithCurrentRole.add(a);
+		}
 	}
 
 	@Override
 	public void choosePreference(PreferenceType t, int change) {
-		// TODO Auto-generated method stub
+		this.preference = new Preference(t, change);
 
 	}
 
@@ -49,6 +50,10 @@ public class Role implements syncAble, choosePreference {
 	private String jobTitle() {
 		// TODO Auto-generated method stub
 		return this.jobTitle;
+	}
+
+	public Department getDepartment() {
+		return this.department;
 	}
 
 }

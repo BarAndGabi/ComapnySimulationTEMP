@@ -1,7 +1,7 @@
 package application.model;
 
 public interface CompanyInterface {
-	void addEmployee(Employee a, Role r, Department d);
+	void addEmployee(Employee a);
 
 	Department addDepartment(String name, boolean sync, Preference pType, int hourChange) throws Exception;
 

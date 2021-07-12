@@ -46,8 +46,8 @@ public class Company implements CompanyInterface {
 	}
 
 	@Override
-	public Department addDepartment(String name, boolean sync, Preference pType, int hourChange) throws Exception {
-		Department d = new Department(name, sync, pType, hourChange);
+	public Department addDepartment(String name, boolean sync, Preference preference, int hourChange) throws Exception {
+		Department d = new Department(name, sync, preference, hourChange);
 		for (int i = 0; i < this.departments.size(); i++) {
 			if (this.departments.get(i).equals(d))
 				throw new alreadyExistException();
@@ -66,4 +66,9 @@ public class Company implements CompanyInterface {
 
 	}
 
+	@Override
+	public void runSimulation() {
+		// TODO Auto-generated method stub
+		
+	}
 }

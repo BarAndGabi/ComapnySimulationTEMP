@@ -7,4 +7,5 @@ public interface CompanyInterface {
 
 	Role addRole(double ProfitPerHour, String jobTitle, boolean sync, Department d, Preference preference)
 			throws Exception;
+	void runSimulation();
 }

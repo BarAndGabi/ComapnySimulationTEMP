@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Role implements syncAble, choosePreference {
 
-	private double ProfitPerHour;
+	private double profitPerHour;
 	private String jobTitle;
 	private ArrayList<Employee> EmployeesWithCurrentRole;
 	private boolean sync;
@@ -14,7 +14,7 @@ public class Role implements syncAble, choosePreference {
 	public Role(double ProfitPerHour, String jobTitle, boolean sync, Department department, Preference preference) {
 		this.department = department;
 		this.jobTitle = jobTitle;
-		this.ProfitPerHour = ProfitPerHour;
+		this.profitPerHour = ProfitPerHour;
 		this.sync = sync;
 		this.preference = preference;
 	}
@@ -48,12 +48,15 @@ public class Role implements syncAble, choosePreference {
 	}
 
 	private String jobTitle() {
-		// TODO Auto-generated method stub
 		return this.jobTitle;
 	}
 
 	public Department getDepartment() {
 		return this.department;
+	}
+
+	public double getProfitPerHour() {
+		return this.profitPerHour;
 	}
 
 }

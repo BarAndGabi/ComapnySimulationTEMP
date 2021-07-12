@@ -13,6 +13,13 @@ public class Preference {
 		this.setStartHour();
 	}
 
+	public Preference(PreferenceType pType) {
+		this.hoursChange = 0;
+		this.pType = pType;
+		this.currentStartHour = this.REGULAR_START_HOUR;
+
+	}
+
 	public void setStartHour() {
 		int changeTemp = this.hoursChange;
 		switch (pType) {
@@ -41,4 +48,22 @@ public class Preference {
 		return this.currentStartHour;
 	}
 
+	public PreferenceType getPreferenceType() {
+		return this.pType;
+	}
+
+	public int getHourChange() {
+		return this.hoursChange;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof Preference))
+			return false;
+		Preference temp = (Preference) obj;
+		if (temp.getPreferenceType() == this.pType)
+			return true;
+		else
+			return false;
+	}
 }

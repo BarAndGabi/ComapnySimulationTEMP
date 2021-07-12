@@ -4,8 +4,9 @@ import javafx.stage.Stage;
 
 public class View {
 
-	public View(Stage primaryStage) {
-		// TODO Auto-generated constructor stub
+	public View(Stage theStage) {
+		theStage.show();
+
 	}
 
 }

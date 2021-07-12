@@ -43,7 +43,7 @@ public class Employee extends Person implements syncAble, choosePreference {
 		switch (preference.getPreferenceType()) {
 		case EARLY_START, LATE_START:
 			int currentHourChange = this.preference.getHourChange();
-			profit = (1.2 * currentHourChange)+ (1* (8 - currentHourChange));
+			profit = (1.2 * currentHourChange) + (1 * (8 - currentHourChange));
 			break;
 		case HOME:
 			profit = 1.1 * 8;
@@ -62,17 +62,18 @@ public class Employee extends Person implements syncAble, choosePreference {
 
 	public double calcHoursProfit(Preference p) {
 		double profit = 0;
-			if (this.preference.getStartHour() == p.getStartHour()) {
-				if (this.preference.equals(p)) 
+		if (this.preference.getStartHour() == p.getStartHour()) {
+			if (this.preference.equals(p))
 				return this.calcHoursProfit();
-			else {
-				
-			}
+			else
+
+				profit = 8;
+
 		} else {
-			
+
 		}
 
-			return profit;
+		return profit;
 	}
 
 	@Override

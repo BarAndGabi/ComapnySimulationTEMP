@@ -21,10 +21,10 @@ public class Company implements CompanyInterface {
 		Department cars = this.addDepartment("cars", false, p2, 6);
 		Department mangment = this.addDepartment("mangment", true, p3, 3);
 		Department wizards = this.addDepartment("wizards", false, p4, 2);
-		Role cleaner = this.addRole(35.5, "cleaner", true, logistic, p3);
-		Role carSalesMan = this.addRole(34, "car sales man", true, cars, p1);
-		Role fileOrganizer = this.addRole(25, "file organizer", true, mangment, p2);
-		Role harryPotter = this.addRole(450.3, "harryPotter", false, wizards, p4);
+		Role cleaner = this.addRole(35.5, "cleaner", true, logistic, p3, true);
+		Role carSalesMan = this.addRole(34, "car sales man", true, cars, p1, true);
+		Role fileOrganizer = this.addRole(25, "file organizer", true, mangment, p2, false);
+		Role harryPotter = this.addRole(450.3, "harryPotter", false, wizards, p4, true);
 		EmployeeGlobaly yossi = new EmployeeGlobaly("yossi", 2002, p3, 7500, fileOrganizer);
 		EmployeeGlobaly bar = new EmployeeGlobaly("bar", 1996, p1, 11000, cleaner);
 		EmployeeGlobalyPlus itay = new EmployeeGlobalyPlus("itay", 2000, p1, harryPotter, 23000);
@@ -57,9 +57,9 @@ public class Company implements CompanyInterface {
 	}
 
 	@Override
-	public Role addRole(double ProfitPerHour, String jobTitle, boolean sync, Department d, Preference preference)
-			throws Exception {
-		Role r = new Role(ProfitPerHour, jobTitle, sync, d, preference);
+	public Role addRole(double ProfitPerHour, String jobTitle, boolean sync, Department d, Preference preference,
+			boolean workFromHome) throws Exception {
+		Role r = new Role(ProfitPerHour, jobTitle, sync, d, preference, workFromHome);
 		int index = this.findDepartment(d);
 		this.departments.get(index).addRole(r);
 		return r;
@@ -69,6 +69,6 @@ public class Company implements CompanyInterface {
 	@Override
 	public void runSimulation() {
 		// TODO Auto-generated method stub
-		
+
 	}
 }

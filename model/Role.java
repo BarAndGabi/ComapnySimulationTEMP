@@ -10,13 +10,16 @@ public class Role implements syncAble, choosePreference {
 	private boolean sync;
 	private Department department;
 	private Preference preference;
+	private boolean workFromHome;
 
-	public Role(double ProfitPerHour, String jobTitle, boolean sync, Department department, Preference preference) {
+	public Role(double ProfitPerHour, String jobTitle, boolean sync, Department department, Preference preference,
+			boolean workFromHome) {
 		this.department = department;
 		this.jobTitle = jobTitle;
 		this.profitPerHour = ProfitPerHour;
 		this.sync = sync;
 		this.preference = preference;
+		this.workFromHome = workFromHome;
 	}
 
 	public void addEmployee(Employee a) {

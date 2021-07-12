@@ -39,6 +39,8 @@ public class Preference {
 				changeTemp--;
 			}
 			break;
+		case HOME:
+			this.currentStartHour = -1;
 
 		}
 

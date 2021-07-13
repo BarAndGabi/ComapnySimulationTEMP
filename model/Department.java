@@ -4,12 +4,17 @@ import java.util.ArrayList;
 
 public class Department implements syncAble, choosePreference {
 	private ArrayList<Role> roles;
+	private ArrayList<Employee> employees;
 	private boolean sync;
 	private String name;
 	private Preference preference;
 
-	public Department(String name, boolean sync, Preference pType, int hourChange) {
+	public Department(String name, boolean sync, PreferenceType p, int hourChange) {
 		this.sync = sync;
+		this.roles = new ArrayList<Role>();
+		this.employees = new ArrayList<Employee>();
+		this.name = name;
+		this.preference = new Preference(p, hourChange);
 	}
 
 	@Override
@@ -19,7 +24,8 @@ public class Department implements syncAble, choosePreference {
 
 	public void addEmployee(Employee a) {
 		int index = this.findRole(a.getRole());
-		this.roles.get(index).addEmployee(a);
+		if (this.roles.get(index).addEmployee(a))
+			this.employees.add(a);
 
 	}
 

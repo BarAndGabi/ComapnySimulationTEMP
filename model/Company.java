@@ -17,12 +17,12 @@ public class Company implements CompanyInterface {
 		Preference p2 = new Preference(PreferenceType.LATE_START, 2);
 		Preference p3 = new Preference(PreferenceType.EARLY_START, 8);
 		Preference p4 = new Preference(PreferenceType.HOME, 0);
-		Department logistic = this.addDepartment("logistic", false, p1, 0);
-		Department cars = this.addDepartment("cars", false, p2, 6);
-		Department mangment = this.addDepartment("mangment", true, p3, 3);
-		Department wizards = this.addDepartment("wizards", false, p4, 2);
-		Role cleaner = this.addRole(35.5, "cleaner", true, logistic, p3, true);
-		Role carSalesMan = this.addRole(34, "car sales man", true, cars, p1, true);
+		Department logistic = this.addDepartment("logistic", false, PreferenceType.REGULAR_START, 0);
+		Department cars = this.addDepartment("cars", false, PreferenceType.EARLY_START, 6);
+		Department mangment = this.addDepartment("mangment", true, PreferenceType.REGULAR_START, 3);
+		Department wizards = this.addDepartment("wizards", false, PreferenceType.LATE_START, 2);
+		Role cleaner = this.addRole(35.5, "cleaner", true, logistic, p2, true);
+		Role carSalesMan = this.addRole(34, "car sales man", true, cars, p3, true);
 		Role fileOrganizer = this.addRole(25, "file organizer", true, mangment, p2, false);
 		Role harryPotter = this.addRole(450.3, "harryPotter", false, wizards, p4, true);
 		EmployeeGlobaly yossi = new EmployeeGlobaly("yossi", 2002, p3, 7500, fileOrganizer);
@@ -45,9 +45,10 @@ public class Company implements CompanyInterface {
 
 	}
 
+
 	@Override
-	public Department addDepartment(String name, boolean sync, Preference preference, int hourChange) throws Exception {
-		Department d = new Department(name, sync, preference, hourChange);
+	public Department addDepartment(String name, boolean sync, PreferenceType p, int hourChange) throws Exception {
+		Department d = new Department(name, sync, p, hourChange);
 		for (int i = 0; i < this.departments.size(); i++) {
 			if (this.departments.get(i).equals(d))
 				throw new alreadyExistException();

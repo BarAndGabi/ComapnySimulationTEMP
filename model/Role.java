@@ -22,10 +22,12 @@ public class Role implements syncAble, choosePreference {
 		this.workFromHome = workFromHome;
 	}
 
-	public void addEmployee(Employee a) {
+	public boolean addEmployee(Employee a) {
 		if (!(this.EmployeesWithCurrentRole.contains(a))) {
 			this.EmployeesWithCurrentRole.add(a);
+			return true;
 		}
+		return false;
 	}
 
 	@Override

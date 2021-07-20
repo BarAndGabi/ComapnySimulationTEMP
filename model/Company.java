@@ -64,6 +64,7 @@ public class Company implements CompanyInterface {
 	private int findDepartment(Department d) {
 		return this.departments.indexOf(d);
 
+		
 	}
 
 	@Override

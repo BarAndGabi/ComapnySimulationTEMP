@@ -1,4 +1,3 @@
-package application.controller;
 
 import application.listeners.UIEventListener;
 import application.listeners.modelListener;

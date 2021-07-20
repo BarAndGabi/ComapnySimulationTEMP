@@ -5,15 +5,11 @@ import java.util.ArrayList;
 public class Company implements CompanyInterface {
 	private ArrayList<Department> departments;
 	private ArrayList<Simulation> SimulationsArchive;
-	protected double currentMoneyProfitForDay;
-	protected double currentHourProfitForDay;
 
 	public Company() throws Exception {
 		this.SimulationsArchive = new ArrayList<Simulation>();
 		this.departments = new ArrayList<Department>();
 		this.addHardCoded();
-		this.currentHourProfitForDay = 0;
-		this.currentMoneyProfitForDay = 0;
 	}
 
 	private void addHardCoded() throws Exception {
@@ -21,42 +17,25 @@ public class Company implements CompanyInterface {
 		Preference p2 = new Preference(PreferenceType.LATE_START, 2);
 		Preference p3 = new Preference(PreferenceType.EARLY_START, 8);
 		Preference p4 = new Preference(PreferenceType.HOME, 0);
-		Department logistic = this.addDepartment("logistic", false, PreferenceType.REGULAR_START, 0, false);
-		Department cars = this.addDepartment("cars", false, PreferenceType.EARLY_START, 6, true);
-		Department mangment = this.addDepartment("mangment", true, PreferenceType.REGULAR_START, 0, true);
-		Department wizards = this.addDepartment("wizards", false, PreferenceType.LATE_START, 3, true);
-		Role cleaner = this.addRole(35.5, "cleaner", true, logistic, p2, true, true);
-		Role carSalesMan = this.addRole(34, "car sales man", true, cars, p3, true, true);
-		Role fileOrganizer = this.addRole(25, "file organizer", true, mangment, p2, false, true);
-		Role harryPotter = this.addRole(450.3, "harryPotter", false, wizards, p4, true, true);
-		EmployeeGlobaly yossi = new EmployeeGlobaly("yossi", 2002, p3, 7500, fileOrganizer, true);
-		EmployeeGlobaly bar = new EmployeeGlobaly("bar", 1996, p1, 11000, cleaner, true);
-		EmployeeGlobalyPlus itay = new EmployeeGlobalyPlus("itay", 2000, p1, harryPotter, 23000, false);
-		EmployeeGlobalyPlus ofir = new EmployeeGlobalyPlus("ofir", 1983, p4, fileOrganizer, 16000, true);
-		EmployeeHourly mor = new EmployeeHourly("mor", 2002, p2, 55, carSalesMan, true);
-		EmployeeHourly yotam = new EmployeeHourly("yotam", 2002, p2, 31, harryPotter, false);
-		this.addEmployeeToDepartment(yossi);
-		this.addEmployeeToDepartment(bar);
-		this.addEmployeeToDepartment(itay);
-		this.addEmployeeToDepartment(ofir);
-		this.addEmployeeToDepartment(mor);
-		this.addEmployeeToDepartment(yotam);
+		Department logistic = this.addDepartment("logistic", false, PreferenceType.REGULAR_START, 0);
+		Department cars = this.addDepartment("cars", false, PreferenceType.EARLY_START, 6);
+		Department mangment = this.addDepartment("mangment", true, PreferenceType.REGULAR_START, 3);
+		Department wizards = this.addDepartment("wizards", false, PreferenceType.LATE_START, 2);
+		Role cleaner = this.addRole(35.5, "cleaner", true, logistic, p2, true);
+		Role carSalesMan = this.addRole(34, "car sales man", true, cars, p3, true);
+		Role fileOrganizer = this.addRole(25, "file organizer", true, mangment, p2, false);
+		Role harryPotter = this.addRole(450.3, "harryPotter", false, wizards, p4, true);
+		EmployeeGlobaly yossi = new EmployeeGlobaly("yossi", 2002, p3, 7500, fileOrganizer);
+		EmployeeGlobaly bar = new EmployeeGlobaly("bar", 1996, p1, 11000, cleaner);
+		EmployeeGlobalyPlus itay = new EmployeeGlobalyPlus("itay", 2000, p1, harryPotter, 23000);
+		EmployeeGlobalyPlus ofir = new EmployeeGlobalyPlus("ofir", 1983, p4, fileOrganizer, 16000);
+		EmployeeHourly mor = new EmployeeHourly("mor", 2002, p2, 55, carSalesMan);
+		EmployeeHourly yotam = new EmployeeHourly("yotam", 2002, p2, 31, harryPotter);
 
 	}
 
 	@Override
-	public void addEmployeeHourly(String name, int yearOfBirth, Preference preference, int salaryPerHour, Role role,
-			boolean cP) throws Exception {
-		this.addEmployeeToDepartment(new EmployeeHourly(name, yearOfBirth, preference, salaryPerHour, role, cP));
-	}
-
-	@Override
-	public void addEmployeeGlobaly(String name, int yearOfBirth, Preference preference, int salaryPerMonth, Role role,
-			boolean cP) throws Exception {
-		this.addEmployeeToDepartment(new EmployeeGlobaly(name, yearOfBirth, preference, salaryPerMonth, role, cP));
-	}
-
-	public void addEmployeeToDepartment(Employee a) {
+	public void addEmployee(Employee a) {
 		int index = this.findDepartment(a.getDepartment());
 		this.departments.get(index).addEmployee(a);
 	}
@@ -67,10 +46,10 @@ public class Company implements CompanyInterface {
 		
 	}
 
+
 	@Override
-	public Department addDepartment(String name, boolean sync, PreferenceType p, int hourChange, boolean cP)
-			throws Exception {
-		Department d = new Department(name, sync, p, hourChange, cP);
+	public Department addDepartment(String name, boolean sync, PreferenceType p, int hourChange) throws Exception {
+		Department d = new Department(name, sync, p, hourChange);
 		for (int i = 0; i < this.departments.size(); i++) {
 			if (this.departments.get(i).equals(d))
 				throw new alreadyExistException();
@@ -81,8 +60,8 @@ public class Company implements CompanyInterface {
 
 	@Override
 	public Role addRole(double ProfitPerHour, String jobTitle, boolean sync, Department d, Preference preference,
-			boolean workFromHome, boolean b) throws Exception {
-		Role r = new Role(ProfitPerHour, jobTitle, sync, d, preference, workFromHome, b);
+			boolean workFromHome) throws Exception {
+		Role r = new Role(ProfitPerHour, jobTitle, sync, d, preference, workFromHome);
 		int index = this.findDepartment(d);
 		this.departments.get(index).addRole(r);
 		return r;
@@ -91,12 +70,7 @@ public class Company implements CompanyInterface {
 
 	@Override
 	public void runSimulation() {
-	}
+		// TODO Auto-generated method stub
 
-	@Override
-	public String toString() {
-		StringBuffer str = new StringBuffer();
-		return str.toString();
 	}
-
 }

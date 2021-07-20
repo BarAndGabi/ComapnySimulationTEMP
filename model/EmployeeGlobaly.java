@@ -1,12 +1,12 @@
 package application.model;
 
 public class EmployeeGlobaly extends Employee {
-	protected final int hourPerMonth = 160;
-	protected int salaryPerMonth;
+	private final int hourPerMonth = 160;
+	private int salaryPerMonth;
 
-	public EmployeeGlobaly(String name, int yearOfBirth, Preference preference, int salaryPerMonth, Role role,boolean cP)
+	public EmployeeGlobaly(String name, int yearOfBirth, Preference preference, int salaryPerMonth, Role role)
 			throws Exception {
-		super(name, yearOfBirth, preference, role,cP);
+		super(name, yearOfBirth, preference, role);
 		this.salaryPerMonth = salaryPerMonth;
 
 	}

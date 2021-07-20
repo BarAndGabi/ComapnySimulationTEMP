@@ -7,6 +7,7 @@ import application.view.View;
 public class CompanySimulationController implements modelListener, UIEventListener {
 
 	public CompanySimulationController(CompanyInterface eModel, View eView) {
+		// TODO Auto-generated constructor stub
 	}
 
 }

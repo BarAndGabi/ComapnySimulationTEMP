@@ -2,14 +2,13 @@ package application.model;
 
 public class Simulation {
 	private String companyDataAtSimulation;
-	private int daysToSimulate;
-	private String results;
 	private int simulationNum;
 	private static int Counter = 1;
+	private double profit;
 
-	public Simulation(String companyDataAtSimulation, int days) {
+	public Simulation(String companyDataAtSimulation, double profit) {
 		this.companyDataAtSimulation = companyDataAtSimulation;
-		this.daysToSimulate = days;
 		this.simulationNum = Counter++;
+		this.profit = profit;
 	}
 }
